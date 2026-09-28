@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Automated Pipetting — BME 100</title>
+
+  <meta
+    name="description"
+    content="Creating a cost-accessible automated pipetting system for 96-well plates."
+  >
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<div class="progress">
+  <span></span>
+</div>
+
+
+<!-- NAVIGATION -->
+
+<header class="nav">
+
+  <a class="brand" href="#home">
+    <i></i>
+    ARGIRO
+  </a>
+
+  <nav>
+    <a href="#challenge">Challenge</a>
+    <a href="#system">System</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#technology">Technology</a>
+    <a href="#impact">Impact</a>
+  </nav>
+
+  <button class="menu" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+  </button>
+
+</header>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-grid"></div>
+
+  <div class="hero-copy">
+
+    <p class="eyebrow">
+      BIOMEDICAL ENGINEERING · BME 100 · FALL 2026
+    </p>
+
+    <h1>
+      Automated<br>
+      <em>Pipetting.</em>
+    </h1>
+
+    <p class="lede">
+      Exploring a more cost-accessible approach to
+      automating pipetting into 96-well plates.
+    </p>
+
+    <a class="pill" href="#challenge">
+      Explore the project
+      <b>↓</b>
+    </a>
+
+  </div>
+
+
+  <div class="hero-visual" aria-hidden="true">
+
+    <div class="glow"></div>
+
+    <div class="hero-plate" id="heroPlate"></div>
+
+    <div class="pipette">
+      <span></span>
+      <i></i>
+    </div>
+
+  </div>
+
+
+  <div class="scroll-cue">
+    SCROLL
+    <span></span>
+  </div>
+
+</section>
+
+
+
+<!-- CHALLENGE -->
+
+<section class="dark story" id="challenge">
+
+  <div class="section-index">
+    01
+  </div>
+
+  <div class="story-title reveal">
+
+    <p class="eyebrow">
+      THE CHALLENGE
+    </p>
+
+    <h2>
+      Automation<br>
+      shouldn't be<br>
+      <em>inaccessible.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="story-copy reveal">
+
+    <p class="big">
+      Laboratory automation already exists.
+      The question is who can realistically access it.
+    </p>
+
+    <p>
+      Large commercial liquid-handling systems can
+      automate repetitive pipetting workflows. This
+      project asks how a similar task might be approached
+      with cost accessibility for academic laboratories
+      in mind.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- DESIGN QUESTION -->
+
+<section class="dark statement">
+
+  <div class="statement-inner reveal">
+
+    <p class="eyebrow">
+      THE DESIGN QUESTION
+    </p>
+
+    <div class="number">
+      96
+    </div>
+
+    <h2>
+      wells.<br>
+      <em>One workflow.</em>
+    </h2>
+
+    <p>
+      A 96-well plate turns a repetitive liquid-handling
+      task into a clearly defined automation problem.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- SYSTEM -->
+
+<section class="light system" id="system">
+
+  <div class="section-index">
+    02
+  </div>
+
+
+  <div class="system-intro reveal">
+
+    <p class="eyebrow">
+      THE PLATFORM
+    </p>
+
+    <h2>
+      Designed around<br>
+      <em>96 wells.</em>
+    </h2>
+
+    <p>
+      Move across the plate. Every well is a possible
+      destination in the same compact format.
+    </p>
+
+  </div>
+
+
+  <div class="plate-area reveal">
+
+    <div class="plate-wrap">
+
+      <div class="cols">
+        1 2 3 4 5 6 7 8 9 10 11 12
+      </div>
+
+      <div class="rows">
+        A<br>
+        B<br>
+        C<br>
+        D<br>
+        E<br>
+        F<br>
+        G<br>
+        H
+      </div>
+
+      <div
+        class="large-plate"
+        id="largePlate">
+      </div>
+
+    </div>
+
+
+    <div class="plate-readout">
+
+      <span>
+        FORMAT
+        <b>8 × 12</b>
+      </span>
+
+      <span>
+        TOTAL
+        <b>96</b>
+      </span>
+
+      <span>
+        SELECTED
+        <b id="selectedWell">A1</b>
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- WORKFLOW -->
+
+<section class="dark workflow" id="workflow">
+
+  <div class="section-index">
+    03
+  </div>
+
+
+  <div class="workflow-head reveal">
+
+    <p class="eyebrow">
+      THE WORKFLOW
+    </p>
+
+    <h2>
+      Make the repetition<br>
+      <em>the machine's job.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="workflow-stage reveal">
+
+    <div class="mini-shell">
+
+      <div id="miniPlate"></div>
+
+      <div
+        class="moving-pipette"
+        id="movingPipette">
+      </div>
+
+    </div>
+
+
+    <div class="steps">
+
+      <button
+        class="step active"
+        data-step="0">
+
+        <span>01</span>
+
+        <strong>
+          Aspirate
+        </strong>
+
+        <small>
+          Prepare the liquid-handling action.
+        </small>
+
+      </button>
+
+
+      <button
+        class="step"
+        data-step="1">
+
+        <span>02</span>
+
+        <strong>
+          Position
+        </strong>
+
+        <small>
+          Move toward the target location.
+        </small>
+
+      </button>
+
+
+      <button
+        class="step"
+        data-step="2">
+
+        <span>03</span>
+
+        <strong>
+          Dispense
+        </strong>
+
+        <small>
+          Deliver into the selected well.
+        </small>
+
+      </button>
+
+
+      <button
+        class="step"
+        data-step="3">
+
+        <span>04</span>
+
+        <strong>
+          Repeat
+        </strong>
+
+        <small>
+          Continue the sequence across the plate.
+        </small>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- TECHNOLOGY -->
+
+<section
+  class="light technology"
+  id="technology">
+
+  <div class="section-index">
+    04
+  </div>
+
+
+  <div class="tech-head reveal">
+
+    <p class="eyebrow">
+      ENGINEERING LENS
+    </p>
+
+    <h2>
+      Four things<br>
+      the design must <em>consider.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="tech-grid">
+
+    <article class="tech reveal">
+
+      <span>01</span>
+
+      <h3>
+        Positioning
+      </h3>
+
+      <p>
+        How the system reaches the intended well.
+      </p>
+
+    </article>
+
+
+    <article class="tech reveal">
+
+      <span>02</span>
+
+      <h3>
+        Liquid handling
+      </h3>
+
+      <p>
+        How aspiration and dispensing become
+        repeatable actions.
+      </p>
+
+    </article>
+
+
+    <article class="tech reveal">
+
+      <span>03</span>
+
+      <h3>
+        Automation
+      </h3>
+
+      <p>
+        How a repeated sequence can be translated
+        into machine-controlled steps.
+      </p>
+
+    </article>
+
+
+    <article class="tech reveal">
+
+      <span>04</span>
+
+      <h3>
+        Accessibility
+      </h3>
+
+      <p>
+        How the concept stays focused on the needs
+        of academic laboratories.
+      </p>
+
+    </article>
+
+  </div>
+
+
+  <p class="source-note reveal">
+
+    These are design considerations, not claims about
+    final prototype specifications. Detailed implementation
+    belongs here once the full project presentation is available.
+
+  </p>
+
+</section>
+
+
+
+<!-- COMPARISON -->
+
+<section class="dark compare">
+
+  <div class="compare-head reveal">
+
+    <p class="eyebrow">
+      THE OPPORTUNITY
+    </p>
+
+    <h2>
+      From repeated<br>
+      <em>to automated.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="compare-grid reveal">
+
+    <div>
+
+      <small>
+        TRADITIONAL APPROACH
+      </small>
+
+      <h3>
+        Manual pipetting
+      </h3>
+
+      <p>
+        Human-directed liquid handling repeated
+        across wells.
+      </p>
+
+    </div>
+
+
+    <div class="arrow">
+      →
+    </div>
+
+
+    <div class="accent-box">
+
+      <small>
+        PROJECT DIRECTION
+      </small>
+
+      <h3>
+        Automated pipetting
+      </h3>
+
+      <p>
+        A system-oriented approach to repeating
+        the same task across a 96-well plate.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- TIMELINE -->
+
+<section class="light timeline">
+
+  <div class="section-index">
+    05
+  </div>
+
+
+  <div class="timeline-head reveal">
+
+    <p class="eyebrow">
+      PROJECT DEVELOPMENT
+    </p>
+
+    <h2>
+      From concept<br>
+      <em>to evaluation.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="timeline-grid">
+
+    <article class="reveal">
+
+      <span>01</span>
+
+      <h3>
+        Problem
+      </h3>
+
+      <p>
+        Define the accessibility challenge.
+      </p>
+
+    </article>
+
+
+    <article class="reveal">
+
+      <span>02</span>
+
+      <h3>
+        Design
+      </h3>
+
+      <p>
+        Develop the automated pipetting concept.
+      </p>
+
+    </article>
+
+
+    <article class="reveal">
+
+      <span>03</span>
+
+      <h3>
+        Prototype
+      </h3>
+
+      <p>
+        Build and test the proposed system.
+      </p>
+
+    </article>
+
+
+    <article class="reveal">
+
+      <span>04</span>
+
+      <h3>
+        Evaluate
+      </h3>
+
+      <p>
+        Measure performance and identify improvements.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+
+<!-- IMPACT -->
+
+<section
+  class="dark impact"
+  id="impact">
+
+  <div class="impact-copy reveal">
+
+    <p class="eyebrow">
+      THE BIGGER IDEA
+    </p>
+
+    <h2>
+      Automation<br>
+      for <em>more people.</em>
+    </h2>
+
+    <p>
+      The project centers on a simple premise:
+      laboratory automation is useful, but access
+      to automation matters too.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- REFERENCES -->
+
+<section class="dark references">
+
+  <p class="eyebrow">
+    REFERENCES
+  </p>
+
+  <h2>
+    Sources &<br>
+    citations.
+  </h2>
+
+
+  <div class="reference-card reveal">
+
+    <span>
+      01
+    </span>
+
+    <div>
+
+      <strong>
+        Beckman Coulter — Biomek i-Series
+        Automated Workstations
+      </strong>
+
+      <p>
+        Commercial liquid-handling automation
+        used as context for the project's
+        accessibility question.
+      </p>
+
+      <a
+        href="https://www.beckman.com/liquid-handlers/biomek-i-series-automated-workstations/biomek-i7"
+        target="_blank"
+        rel="noopener">
+
+        View source ↗
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <p class="pending">
+    Additional Presentation 1 sources should be
+    added here as they become available.
+  </p>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+  <strong>
+    ARGIRO
+  </strong>
+
+  <span>
+    BME 100 · Fall 2026 · Biomedical Engineering
+  </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
