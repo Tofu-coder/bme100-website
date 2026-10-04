@@ -1851,3 +1851,14 @@ footer strong {
     }
 }
 
+
+/* Fix Statistical Challenges section */
+.statistics {
+    min-height: auto;
+    padding-top: 180px;
+    padding-bottom: 140px;
+}
+
+html {
+    scroll-padding-top: 100px;
+}
