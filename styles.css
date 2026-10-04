@@ -1823,3 +1823,55 @@ footer strong {
 
 }
 
+
+/* Fix Statistical Challenges alignment */
+.statistics {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.statistics .story-title,
+.statistics .section-index {
+  margin-left: 0 !important;
+}
+
+.statistics .story-title {
+  width: 100% !important;
+  max-width: 1200px;
+}
+
+.statistics .story-title .eyebrow,
+.statistics .story-title h2 {
+  text-align: left !important;
+}
+
+
+/* STATISTICS — align with main page content */
+.statistics {
+  position: relative !important;
+}
+
+.statistics .story-title,
+.statistics .story-copy {
+  margin-left: max(24px, calc((100vw - 1200px) / 2)) !important;
+  margin-right: max(24px, calc((100vw - 1200px) / 2)) !important;
+}
+
+.statistics .story-title {
+  width: auto !important;
+  max-width: 1200px !important;
+}
+
+.statistics .story-copy {
+  width: auto !important;
+  max-width: 900px !important;
+}
+
+@media (max-width: 700px) {
+  .statistics .story-title,
+  .statistics .story-copy {
+    margin-left: 24px !important;
+    margin-right: 24px !important;
+  }
+}
+
